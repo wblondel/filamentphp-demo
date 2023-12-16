@@ -31,7 +31,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Clear images
-        Storage::deleteDirectory('public');
+        foreach (Storage::disk('minio')->allDirectories() as $directory) {
+            Storage::disk('minio')->deleteDirectory($directory);
+        }
+
+        foreach (Storage::disk('minio')->allFiles() as $file) {
+            Storage::disk('minio')->delete($file);
+        }
+
 
         // Admin
         $this->command->warn(PHP_EOL . 'Creating admin user...');

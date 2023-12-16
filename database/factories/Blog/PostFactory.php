@@ -39,7 +39,7 @@ class PostFactory extends Factory
 
         $filename = Str::uuid() . '.jpg';
 
-        Storage::disk('public')->put($filename, $image);
+        Storage::disk('minio')->put($filename, $image);
 
         return $filename;
     }
