@@ -204,7 +204,8 @@ class PostResource extends Resource
                                 ]),
                             Components\ImageEntry::make('image')
                                 ->hiddenLabel()
-                                ->grow(false),
+                                ->grow(false)
+                                ->visibility('private'),
                         ])->from('lg'),
                     ]),
                 Components\Section::make('Content')
