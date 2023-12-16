@@ -80,6 +80,7 @@ class PostResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Image')
                             ->image()
+                            ->visibility('private')
                             ->hiddenLabel(),
                     ])
                     ->collapsible(),
@@ -91,7 +92,8 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Image'),
+                    ->label('Image')
+                    ->visibility('private'),
 
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
