@@ -49,6 +49,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'link-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/link-images'),
+            'url' => env('APP_URL') . '/storage/link-images',
+            'visibility' => 'public',
+        ],
+
+        'post-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/post-images'),
+            'url' => env('APP_URL') . '/storage/post-images',
+            'visibility' => 'public',
+        ],
+
         'minio' => [
             'driver' => 's3',
             'endpoint' => env('MINIO_ENDPOINT', 'http://127.0.0.1:9000'),

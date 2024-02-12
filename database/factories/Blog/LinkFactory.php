@@ -2,18 +2,17 @@
 
 namespace Database\Factories\Blog;
 
-use Database\Factories\Concerns\CanCreateImages;
+use App\Models\Blog\Link;
 use Database\Seeders\LocalImages;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\UnreachableUrl;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Blog\Link>
  */
 class LinkFactory extends Factory
 {
-    use CanCreateImages;
-
     /**
      * Define the model's default state.
      *
@@ -33,8 +32,21 @@ class LinkFactory extends Factory
                 'es' => $this->faker->sentence(),
                 'nl' => $this->faker->sentence(),
             ],
-            'color' => $this->faker->hexColor(),
-            'image' => $this->createImage(LocalImages::SIZE_1280x720),
+            'color' => $this->faker->hexColor()
         ];
+    }
+
+    public function configure(): LinkFactory
+    {
+        return $this->afterCreating(function (Link $product) {
+            try {
+                $product
+                    ->addMedia(LocalImages::getRandomFile(LocalImages::SIZE_1280x720))
+                    ->preservingOriginal()
+                    ->toMediaCollection('link-images');
+            } catch (UnreachableUrl $exception) {
+                return;
+            }
+        });
     }
 }
