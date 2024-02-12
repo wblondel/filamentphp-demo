@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => $name = $this->faker->unique()->catchPhrase(),
             'slug' => Str::slug($name),
             'sku' => $this->faker->unique()->ean8(),
-            'barcode' => $this->faker->ean13(),
+            'barcode' => $this->faker->unique()->ean13(),
             'description' => $this->faker->realText(),
             'qty' => $this->faker->randomDigitNotNull(),
             'security_stock' => $this->faker->randomDigitNotNull(),

@@ -13,7 +13,7 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'reference' => 'PAY' . $this->faker->unique()->randomNumber(6),
+            'reference' => 'PAY', //. $this->faker->unique()->randomNumber(6, true),
             'currency' => $this->faker->randomElement(collect(Currency::getCurrencies())->keys()),
             'amount' => $this->faker->randomFloat(2, 100, 2000),
             'provider' => $this->faker->randomElement(['stripe', 'paypal']),

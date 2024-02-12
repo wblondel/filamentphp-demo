@@ -53,6 +53,7 @@ class Post extends Model implements HasMedia
         $this
             ->addMediaCollection('post-images')
             ->useDisk('post-images')
+            ->singleFile()
             ->registerMediaConversions(function (Media $media) {
                 $this
                     ->addMediaConversion('thumb')

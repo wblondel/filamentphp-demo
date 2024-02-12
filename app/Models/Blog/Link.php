@@ -28,6 +28,7 @@ class Link extends Model implements HasMedia
         $this
             ->addMediaCollection('link-images')
             ->useDisk('link-images')
+            ->singleFile()
             ->registerMediaConversions(function (Media $media) {
                 $this
                     ->addMediaConversion('thumb')

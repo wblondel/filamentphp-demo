@@ -15,7 +15,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'number' => 'OR' . $this->faker->unique()->randomNumber(6),
+            'number' => 'OR', //. $this->faker->unique()->randomNumber(6, true),
             'currency' => strtolower($this->faker->currencyCode()),
             'total_price' => $this->faker->randomFloat(2, 100, 2000),
             'status' => $this->faker->randomElement(['new', 'processing', 'shipped', 'delivered', 'cancelled']),

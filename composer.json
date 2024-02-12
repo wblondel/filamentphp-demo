@@ -25,11 +25,10 @@
         "squirephp/currencies-en": "^3.3"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
         "fakerphp/faker": "^1.9.1",
         "larastan/larastan": "^2.1",
         "laravel/pint": "^1.0",
-        "laravel/sail": "^1.18",
+        "laravel/sail": "^1.27",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpstan/phpstan-deprecation-rules": "^1.1",
