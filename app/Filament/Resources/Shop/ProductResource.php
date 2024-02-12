@@ -11,7 +11,6 @@ use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
-use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\QueryBuilder;
@@ -76,7 +75,6 @@ class ProductResource extends Resource
                             ->schema([
                                 SpatieMediaLibraryFileUpload::make('media')
                                     ->collection('product-images')
-                                    ->visibility('private')
                                     ->multiple()
                                     ->maxFiles(5)
                                     ->hiddenLabel(),
@@ -184,7 +182,7 @@ class ProductResource extends Resource
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('product-image')
                     ->label('Image')
                     ->collection('product-images')
-                    ->visibility('private'),
+                    ->conversion('thumb'),
 
                 Tables\Columns\TextColumn::make('name')
                     ->label('Name')

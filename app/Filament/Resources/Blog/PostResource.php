@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Blog;
 
 use App\Filament\Resources\Blog\PostResource\Pages;
-use App\Filament\Resources\Blog\PostResource\RelationManagers;
 use App\Models\Blog\Post;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieTagsInput;
@@ -11,7 +10,6 @@ use Filament\Forms\Form;
 use Filament\Infolists\Components;
 use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
-use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -80,7 +78,6 @@ class PostResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Image')
                             ->image()
-                            ->visibility('private')
                             ->hiddenLabel(),
                     ])
                     ->collapsible(),
@@ -92,8 +89,7 @@ class PostResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Image')
-                    ->visibility('private'),
+                    ->label('Image'),
 
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
@@ -204,8 +200,7 @@ class PostResource extends Resource
                                 ]),
                             Components\ImageEntry::make('image')
                                 ->hiddenLabel()
-                                ->grow(false)
-                                ->visibility('private'),
+                                ->grow(false),
                         ])->from('lg'),
                     ]),
                 Components\Section::make('Content')

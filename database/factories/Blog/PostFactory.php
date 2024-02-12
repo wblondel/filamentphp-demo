@@ -39,7 +39,7 @@ class PostFactory extends Factory
 
         $filename = Str::uuid() . '.jpg';
 
-        Storage::disk('minio')->put($filename, $image);
+        Storage::disk(config('filament.default_filesystem_disk'))->put($filename, $image);
 
         return $filename;
     }

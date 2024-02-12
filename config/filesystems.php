@@ -42,6 +42,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'product-images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/product-images'),
+            'url' => env('APP_URL') . '/storage/product-images',
+            'visibility' => 'public',
+        ],
+
         'minio' => [
             'driver' => 's3',
             'endpoint' => env('MINIO_ENDPOINT', 'http://127.0.0.1:9000'),

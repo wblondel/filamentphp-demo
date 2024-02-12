@@ -43,7 +43,7 @@ class ProductFactory extends Factory
             try {
                 $product
                     ->addMediaFromUrl(DatabaseSeeder::IMAGE_URL)
-                    ->toMediaCollection('product-images', 'minio');
+                    ->toMediaCollection('product-images');
             } catch (UnreachableUrl $exception) {
                 return;
             }

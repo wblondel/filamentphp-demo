@@ -26,19 +26,20 @@ use Symfony\Component\Console\Helper\ProgressBar;
 
 class DatabaseSeeder extends Seeder
 {
-    const IMAGE_URL = 'https://source.unsplash.com/random/200x200/?img=1';
+    const IMAGE_URL = 'https://picsum.photos/400';
 
     public function run(): void
     {
+        $filamentFilesystemDisk = config('filament.default_filesystem_disk');
+
         // Clear images
-        foreach (Storage::disk('minio')->allDirectories() as $directory) {
-            Storage::disk('minio')->deleteDirectory($directory);
+        foreach (Storage::disk($filamentFilesystemDisk)->allDirectories() as $directory) {
+            Storage::disk($filamentFilesystemDisk)->deleteDirectory($directory);
         }
 
-        foreach (Storage::disk('minio')->allFiles() as $file) {
-            Storage::disk('minio')->delete($file);
+        foreach (Storage::disk($filamentFilesystemDisk)->allFiles() as $file) {
+            Storage::disk($filamentFilesystemDisk)->delete($file);
         }
-
 
         // Admin
         $this->command->warn(PHP_EOL . 'Creating admin user...');
@@ -112,7 +113,7 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Blog categories created.');
 
         $this->command->warn(PHP_EOL . 'Creating blog authors and posts...');
-        $this->withProgressBar(20, fn () => Author::factory(1)
+        $this->withProgressBar(1, fn () => Author::factory(1)
             ->has(
                 Post::factory()->count(5)
                     ->has(
