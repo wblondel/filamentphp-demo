@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Tapp\FilamentAuditing\RelationManagers\AuditsRelationManager;
 
 class PostResource extends Resource
 {
@@ -231,7 +232,9 @@ class PostResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [
+            AuditsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array
